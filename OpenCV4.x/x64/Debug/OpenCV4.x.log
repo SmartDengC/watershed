@@ -1,0 +1,20 @@
+﻿  OpenCV4.x.2.cpp
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:  “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:         with
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:             _Tp=float
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:         and
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:             _Tp=int
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,46): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:  “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:         with
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:             _Tp=float
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:         and
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:             _Tp=int
+E:\Data_Code\CC++\OpenCV4.x\OpenCV4.x\OpenCV4.x.2.cpp(109,34): warning C4244:         ]
+  OpenCV4.x.vcxproj -> E:\Data_Code\CC++\OpenCV4.x\x64\Debug\OpenCV4.x.exe
