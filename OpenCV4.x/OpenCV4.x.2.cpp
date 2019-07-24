@@ -1,49 +1,56 @@
+ï»¿/**
+* VerÂ Â Â Â Â  è´Ÿè´£äººÂ Â Â Â Â Â Â  å˜æ›´å†…å®¹Â Â Â Â Â Â Â Â Â Â Â  å˜æ›´æ—¥æœŸ
+* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+* V1.0Â Â Â Â  é‚“èªÂ Â Â 		Â  åˆç‰ˆÂ Â Â Â Â Â Â Â Â Â Â Â Â Â Â 2019-7-23 
+* 
+* File(æ–‡ä»¶å): OpenCV4.x.1.cpp
+* Brief(ç®€è¿°): åˆ†æ°´å²­è®¡æ•°ï¼Œæ‰¹é‡å¤„ç†å›¾ç‰‡ï¼Œå¹¶ä¿å­˜åœ¨ç›¸åº”çš„ç›®å½•ä¸‹
+*/
 # include <opencv2/opencv.hpp>
 # include <iostream>
-#include "stdio.h"
-#include "stdlib.h"
+# include "stdio.h"
+# include "stdlib.h"
 
 using namespace cv;
 using namespace std;
 
+// å› ä¸ºæ˜¯ä¸€ä¸ªé¡¹ç›®ï¼Œä¸èƒ½æœ‰ä¸¤ä¸ªmainï¼Œæ‰€ä»¥é‡å‘½åmadinå³å¯ä½¿ç”¨è¯´
 int madin(int argc, char** argv) {
 	/**
-	ÊäÈëÍ¼Ïñ----»Ò¶È----¶şÖµ----¾àÀë±ä»»----Ñ°ÕÒÖÖ×Ó----Éú³Émarker-----·ÖË®Áë±ä»»----Êä³öÍ¼Ïñ---end
+		è¾“å…¥å›¾åƒ----ç°åº¦----äºŒå€¼----è·ç¦»å˜æ¢----å¯»æ‰¾ç§å­
+			   ----ç”Ÿæˆmarker-----åˆ†æ°´å²­å˜æ¢----è¾“å‡ºå›¾åƒ---end
 	*/
 	for (int i = 303; i <= 484; i++){
 		string picPath = "E:/Data_Media/Data_Picture/seedPictures/IMG_1"+std::to_string(i)+".JPG";
 		Mat src = imread(picPath);
 		if (src.empty()) {
-			// printf("could not load image...\n");
-			// return -1;
 			continue;
 		}
-
 		// namedWindow("input image", WINDOW_AUTOSIZE);
 		// imshow("input image", src);
 
-		// (1): gray ±³¾°´¿É«»¯
+		// (1): gray èƒŒæ™¯çº¯è‰²åŒ–
 		Mat gray, binary, shifted;
-		// ´¿»¯ Ôëµã£¬»ùÓÚ½ğ×ÖËşµÄmeanShift£¬µü´úÊÕÁ²µÄ·½·¨±ßÔµ±£Áô£¬Ò»¸ö¿Õ¼ä£¬Ò»¸öcolor¾àÀë £¬²îÒìĞ¡µÄºÍ²îÒì´óµÄ²î¾à
-		pyrMeanShiftFiltering(src, shifted, 21, 51);    // imshow("shifted", shifted);
+		// çº¯åŒ–å™ªç‚¹ï¼ŒåŸºäºé‡‘å­—å¡”çš„meanShiftï¼Œè¿­ä»£æ”¶æ•›çš„æ–¹æ³•è¾¹ç¼˜ä¿ç•™ï¼Œä¸€ä¸ªç©ºé—´ï¼Œä¸€ä¸ªcolorè·ç¦»
+		pyrMeanShiftFiltering(src, shifted, 21, 51);   
 
 		// (2): binary
-		cvtColor(shifted, gray, COLOR_BGR2GRAY);    // ±ä»»³Ébgr2gray
-		threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);    // ¶şÖµ»¯ // imshow("binary", binary);
+		cvtColor(shifted, gray, COLOR_BGR2GRAY);    // å˜æ¢æˆbgr2gray
+		threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);    // äºŒå€¼åŒ–
 
 		// (3): distance tranform
 		Mat dist;
-		distanceTransform(binary, dist, DistanceTypes::DIST_L2, 3, CV_32F);  // L2 ÊÇÁ½µãÖ®¼äµÄ¾àÀë
-		normalize(dist, dist, 0, 1, NORM_MINMAX); // ±ä»»Ö®ºóÖµ±È½ÏĞ¡  // imshow("distance tranform", dist);
+		distanceTransform(binary, dist, DistanceTypes::DIST_L2, 3, CV_32F);  // L2 æ˜¯ä¸¤ç‚¹ä¹‹é—´çš„è·ç¦»
+		normalize(dist, dist, 0, 1, NORM_MINMAX); // å˜æ¢ä¹‹åå€¼æ¯”è¾ƒå°
 
 		// (4): binary
-		threshold(dist, dist, 0.4, 1, THRESH_BINARY); // imshow("distance tranform", dist);
+		threshold(dist, dist, 0.4, 1, THRESH_BINARY);
 
 		// (5): markers
 		Mat dist_m;
-		dist.convertTo(dist_m, CV_8U); // ±ä³É8Í¨µÀµÄ
+		dist.convertTo(dist_m, CV_8U); // å˜æˆ8é€šé“çš„
 		vector<vector<Point>> contours(11111);
-		// ²éÕÒ¶şÖµÍ¼ÏñµÄ±ßÔµÂÖÀª, Ïàµ±ÓëÕÒÁ¬Í¨Í¼
+		// æŸ¥æ‰¾äºŒå€¼å›¾åƒçš„è¾¹ç¼˜è½®å»“, ç›¸å½“ä¸æ‰¾è¿é€šå›¾
 		findContours(dist_m, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 
 		// (6): create markers
@@ -53,60 +60,57 @@ int madin(int argc, char** argv) {
 		}
 		circle(markers, Point(5, 5), 3, Scalar(255), -1);
 
-		// (7): ĞÎÌ¬Ñ§²Ù×÷£¬²ÊÉ«Í¼Ïñ£¬Ä¿µÄÊÔÊÔÈ¥µô¸ÉÈÅ£¬ÈÃ½á¹û¸üºÃ
+		// (7): å½¢æ€å­¦æ“ä½œï¼Œå½©è‰²å›¾åƒï¼Œç›®çš„è¯•è¯•å»æ‰å¹²æ‰°ï¼Œè®©ç»“æœæ›´å¥½
 		Mat k = getStructuringElement(MORPH_RECT, Size(3, 3), Point(-1, -1));
 		morphologyEx(src, src, MORPH_ERODE, k);
 
-		// (8): Íê³É·ÖË®Áë±ä»»
+		// (8): å®Œæˆåˆ†æ°´å²­å˜æ¢
 		watershed(src, markers);
 		Mat mark = Mat::zeros(markers.size(), CV_8UC1);
 		markers.convertTo(mark, CV_8UC1);
-		bitwise_not(mark, mark, Mat());  // imshow("watersehd", mark);
+		bitwise_not(mark, mark, Mat());  
 		
 
-		// (9): generate random color £¨Ô­Ê¼°×É«·Ö¸î£©
+		// (9): generate random color ï¼ˆåŸå§‹ç™½è‰²åˆ†å‰²ï¼‰
 		vector<Vec3b> colors;
 		for (size_t i = 0; i < contours.size(); i++){
 			int r = theRNG().uniform(0, 255);
 			int g = theRNG().uniform(0, 255);
 			int b = theRNG().uniform(0, 255);
-			// ·ÅÔÚcolorÀïÃæ
+			// æ”¾åœ¨coloré‡Œé¢
 			colors.push_back(Vec3b((uchar)b, (uchar)g, (uchar)r));
 		}
 
-		// (10): ÑÕÉ«Ìî³äÓë×îÖÕÏÔÊ¾£¨¿ÉÒÔÔÚÌî³äµÄÊ±ºò½«¼ÆÊıÌí¼Ó½øÈ¥£©
-		Mat dst = Mat::zeros(markers.size(), CV_8UC3); // ·µ»ØÖ¸¶¨µÄ´óĞ¡ºÍÀàĞÍµÄÁãÊı×é¡£
+		// (10): é¢œè‰²å¡«å……ä¸æœ€ç»ˆæ˜¾ç¤ºï¼ˆå¯ä»¥åœ¨å¡«å……çš„æ—¶å€™å°†è®¡æ•°æ·»åŠ è¿›å»ï¼‰
+		Mat dst = Mat::zeros(markers.size(), CV_8UC3); // è¿”å›æŒ‡å®šçš„å¤§å°å’Œç±»å‹çš„é›¶æ•°ç»„ã€‚
 		int index = 0;
-		// Ìî³äÑÕÉ«
+		// å¡«å……é¢œè‰²
 		for (int row=0; row < markers.rows; row++){
 			for (int col = 0; col < markers.cols; col++) {
-				// index Ïàµ±ÓëÌî³äÊ±µÄÊıÖµ£¨0-255£©
+				// index ç›¸å½“ä¸å¡«å……æ—¶çš„æ•°å€¼ï¼ˆ0-255ï¼‰
 				index = markers.at<int>(row, col);
 				if (index > 0 && index <= contours.size()) {
 					dst.at<Vec3b>(row, col) = colors[index - 1];
 				}
 				else{
-					dst.at<Vec3b>(row, col) = Vec3b(0, 0, 0);  // ·ñÕßÓÃºÚÉ«Ìî³ä
+					dst.at<Vec3b>(row, col) = Vec3b(0, 0, 0);  // å¦è€…ç”¨é»‘è‰²å¡«å……
 				}
 			}
 		}
 
-		// (11): ²éÕÒÁ¬Í¨Í¼£¬È»ºó½øĞĞÊı×ÖÌîĞ´
-		//¼ÆËãÂÖÀª¾Ø 	
+		// (11): æŸ¥æ‰¾è¿é€šå›¾ï¼Œç„¶åè¿›è¡Œæ•°å­—å¡«å†™
+		//è®¡ç®—è½®å»“çŸ© 	
 		vector<Moments> mu(contours.size());
 		for (int i = 0; i < contours.size(); i++){
 			mu[i] = moments(contours[i], false);
 		}
-		//¼ÆËãÂÖÀªµÄÖÊĞÄ 	
+		//è®¡ç®—è½®å»“çš„è´¨å¿ƒ 	
 		vector<Point2f> mc(contours.size());
 		for (int i = 0; i < contours.size(); i++){
 			mc[i] = Point2d(mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00);
 		}
-		//»­ÂÖÀª¼°ÆäÖÊĞÄ²¢ÏÔÊ¾ 	
-		vector<Vec4i> hierarchy;
+		//ç”»è½®å»“åŠå…¶è´¨å¿ƒå¹¶æ˜¾ç¤º 	
 		for (int i = 0; i < contours.size(); i++){
-			// Scalar color = Scalar(255, 0, 0);
-			// drawContours(dst, contours, i, color, 2, 8, hierarchy, 0, Point());
 			string tam = std::to_string(i+1);
 			putText(dst, tam, Point(mc[i].x-20, mc[i].y+20), FONT_HERSHEY_SIMPLEX, 0.8, Scalar(0, 0, 0), 2);
 		}

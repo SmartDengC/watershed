@@ -1,41 +1,59 @@
-﻿# include <opencv2/opencv.hpp>
+﻿/**
+* Ver      负责人        变更内容            变更日期
+* ──────────────────────────────────────────────────────────────
+* V1.0     邓聪   		  初版               2019-7-23 
+* 
+* file(文件名): OpenCV4.x.1.cpp
+* brief(简述): 分水岭计数，用于一张图片处理，显示出来
+*/
+
+# include <opencv2/opencv.hpp>
 # include <iostream>
-#include "stdio.h"
-#include "stdlib.h"
+# include "stdio.h"
+# include "stdlib.h"
 
 using namespace cv;
 using namespace std;
+/**
+* @brief:用于对分水岭之后的图片进行计数，显示到图像上
+* @param arg1：查找轮廓后的contours
+* @param arg2: 分水岭处理后的Mat对象
+* @return：计数后的Mat对象
+*/
+Mat count_seed(vector<vector<Point>> contours, Mat dst);
 
+/**
+* @brief：主函数，用于分水岭前面的图像处理
+* @param arg1:none
+* @param arg2:none
+* @return none
+*/
 int main(int argc, char** argv) {
-	/**
-	输入图像----灰度----二值----距离变换----寻找种子----生成marker-----分水岭变换----输出图像---end
-	*/
-	Mat src = imread("E:/Data_Media/Data_Picture/seedPictures/IMG_1306.JPG");
+	Mat src = imread("E:/Data_Media/Data_Picture/seedPictures/IMG_1316.JPG");
 	if (src.empty()) {
 		printf("could not load image...\n");
 		char c = getchar();
 		return -1;
 	}
-
-	// namedWindow("input image", WINDOW_AUTOSIZE);
-	// imshow("input image", src);
+	namedWindow("input image", WINDOW_AUTOSIZE);
+	imshow("input image", src);
 
 	// (1): gray 背景纯色化
 	Mat gray, binary, shifted;
 	// 纯化 噪点，基于金字塔的meanShift，迭代收敛的方法边缘保留，一个空间，一个color距离 ，差异小的和差异大的差距
-	pyrMeanShiftFiltering(src, shifted, 21, 51);    // imshow("shifted", shifted);
+	pyrMeanShiftFiltering(src, shifted, 21, 51);    
 
 	// (2): binary
 	cvtColor(shifted, gray, COLOR_BGR2GRAY);    // 变换成bgr2gray
-	threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);    // 二值化 // imshow("binary", binary);
-
+	threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);    // 二值化 
+	
 	// (3): distance tranform
 	Mat dist;
 	distanceTransform(binary, dist, DistanceTypes::DIST_L2, 3, CV_32F);  // L2 是两点之间的距离
-	normalize(dist, dist, 0, 1, NORM_MINMAX); // 变换之后值比较小  // imshow("distance tranform", dist);
+	normalize(dist, dist, 0, 1, NORM_MINMAX); // 变换之后值比较小  
 
 	// (4): binary
-	threshold(dist, dist, 0.4, 1, THRESH_BINARY); // imshow("distance tranform", dist);
+	threshold(dist, dist, 0.4, 1, THRESH_BINARY); 
 
 	// (5): markers
 	Mat dist_m;
@@ -59,8 +77,7 @@ int main(int argc, char** argv) {
 	watershed(src, markers);
 	Mat mark = Mat::zeros(markers.size(), CV_8UC1);
 	markers.convertTo(mark, CV_8UC1);
-	bitwise_not(mark, mark, Mat());  // imshow("watersehd", mark);
-
+	bitwise_not(mark, mark, Mat());  
 
 	// (9): generate random color （原始白色分割）
 	vector<Vec3b> colors;
@@ -88,7 +105,15 @@ int main(int argc, char** argv) {
 			}
 		}
 	}
+	dst = count_seed(contours, dst);
+	imshow("final Result", dst);
+	printf("number of objects :%zd", contours.size());
 
+	waitKey(0);
+	return 0;
+}
+
+Mat count_seed(vector<vector<Point>> contours, Mat dst) {
 	// (11): 查找连通图，然后进行数字填写
 	//计算轮廓矩 	
 	vector<Moments> mu(contours.size());
@@ -108,10 +133,5 @@ int main(int argc, char** argv) {
 		string tam = std::to_string(i + 1);
 		putText(dst, tam, Point(mc[i].x - 20, mc[i].y + 20), FONT_HERSHEY_SIMPLEX, 0.8, Scalar(0, 0, 0), 2);
 	}
-
-	imshow("final Result", dst);
-	printf("number of objects :%zd", contours.size());
-
-	waitKey(0);
-	return 0;
+	return dst;
 }
