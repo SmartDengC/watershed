@@ -1,7 +1,9 @@
 # watershed
-C++， 实现分水岭代码  
+实现分水岭，并实现图像上计数。  
 
 # Enviornment
+Language: C++
+
 Version: OpenCV 4.1.0  
 
 OS: Windows 10  

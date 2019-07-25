@@ -1,12 +1,12 @@
 ﻿/**
-* Ver      负责人        变更内容            变更日期
-* ──────────────────────────────────────────────────────────────
-* V1.0     邓聪   		  初版               2019-7-23 
-* 
-* file(文件名): OpenCV4.x.1.cpp
-* brief(简述): 分水岭计数，用于一张图片处理，显示出来
-*/
-
+ *Copyright (c),2019, Freative
+ *
+ *@brief:分水岭计数，用于一张图片处理，显示出来
+ *@author:邓聪
+ *@version:V1.0
+ *@date:2019-7-23
+ *
+ */
 # include <opencv2/opencv.hpp>
 # include <iostream>
 # include "stdio.h"
@@ -20,7 +20,7 @@ using namespace std;
 * @param arg2: 分水岭处理后的Mat对象
 * @return：计数后的Mat对象
 */
-Mat count_seed(vector<vector<Point>> contours, Mat dst);
+Mat CountSeed(vector<vector<Point>> contours, Mat dst);
 
 /**
 * @brief：主函数，用于分水岭前面的图像处理
@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 	// (6): create markers
 	Mat markers = Mat::zeros(src.size(), CV_32SC1);
 	for (size_t t = 0; t < contours.size(); t++) {
-		drawContours(markers, contours, static_cast<int>(t), Scalar::all(static_cast<int>(t) + 1), -1);
+		drawContours(markers, contours, static_cast<int>(t), Scalar::all(double(static_cast<int>(t)) + 1), -1);
 	}
 	circle(markers, Point(5, 5), 3, Scalar(255), -1);
 
@@ -98,14 +98,14 @@ int main(int argc, char** argv) {
 			// index 相当与填充时的数值（0-255）
 			index = markers.at<int>(row, col);
 			if (index > 0 && index <= contours.size()) {
-				dst.at<Vec3b>(row, col) = colors[index - 1];
+				dst.at<Vec3b>(row, col) = colors[double(index) - 1];  // 此处加double只为消除C26451
 			}
 			else {
 				dst.at<Vec3b>(row, col) = Vec3b(0, 0, 0);  // 否者用黑色填充
 			}
 		}
 	}
-	dst = count_seed(contours, dst);
+	dst = CountSeed(contours, dst);
 	imshow("final Result", dst);
 	printf("number of objects :%zd", contours.size());
 
@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
 	return 0;
 }
 
-Mat count_seed(vector<vector<Point>> contours, Mat dst) {
+Mat CountSeed(vector<vector<Point>> contours, Mat dst) {
 	// (11): 查找连通图，然后进行数字填写
 	//计算轮廓矩 	
 	vector<Moments> mu(contours.size());
