@@ -1,0 +1,12 @@
+﻿  OpenCV1.cpp
+f:\watershed\watershed\opencv1.cpp(92): warning C4244: “参数”: 从“double”转换到“const unsigned __int64”，可能丢失数据
+f:\watershed\watershed\opencv1.cpp(125): warning C4244: “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+  watershed.vcxproj -> F:\watershed\x64\Debug\watershed.exe
