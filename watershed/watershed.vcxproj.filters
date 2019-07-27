@@ -13,13 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\DC">
+      <UniqueIdentifier>{e5dff438-64bd-4072-aec2-3ee2af2db55a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\DR">
+      <UniqueIdentifier>{df25aeaa-c62e-4bc3-9109-390b3b030ce3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenCV1.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\DC</Filter>
     </ClCompile>
     <ClCompile Include="OpenCV2.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\DC</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

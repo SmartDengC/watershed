@@ -20,7 +20,8 @@ Mat CountSeed(vector<vector<Point>> contours, Mat dst);
 * @return none
 */
 int main(int argc, char** argv) {
-	Mat src = imread("F:\\watershed\\photo\\originPic\\IMG_1304.JPG");
+	//Mat src = imread("F:\\watershed\\photo\\originPic\\IMG_1304.JPG");
+	Mat src = imread("E:\\Data_Media\\Data_Picture\\seedPictures\\IMG_1345.JPG");
 	if (src.empty()) {
 		printf("could not load image...\n");
 		char c = getchar();

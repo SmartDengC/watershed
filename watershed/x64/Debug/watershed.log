@@ -1,12 +1,42 @@
 ﻿  OpenCV1.cpp
-f:\watershed\watershed\opencv1.cpp(92): warning C4244: “参数”: 从“double”转换到“const unsigned __int64”，可能丢失数据
-f:\watershed\watershed\opencv1.cpp(125): warning C4244: “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
-          with
-          [
-              _Tp=float
-          ]
-          and
-          [
-              _Tp=int
-          ]
-  watershed.vcxproj -> F:\watershed\x64\Debug\watershed.exe
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(93,52): warning C4244:  “参数”: 从“double”转换到“const unsigned __int64”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:  “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:         with
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:             _Tp=float
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:         and
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:             _Tp=int
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,49): warning C4244:         ]
+  OpenCV2.cpp
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:  “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:         with
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:             _Tp=float
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:         and
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:             _Tp=int
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV1.cpp(126,35): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(85,53): warning C4244:  “参数”: 从“double”转换到“const unsigned __int64”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:  “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:         with
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:             _Tp=float
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:         and
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:             _Tp=int
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,50): warning C4244:         ]
+  正在生成代码...
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:  “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:         with
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:             _Tp=float
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:         ]
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:         and
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:         [
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:             _Tp=int
+E:\Data_Code\CC++\OpenCV4.x\watershed\OpenCV2.cpp(107,36): warning C4244:         ]
+  watershed.vcxproj -> E:\Data_Code\CC++\OpenCV4.x\x64\Debug\watershed.exe
