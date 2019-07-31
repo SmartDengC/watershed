@@ -27,5 +27,11 @@
     <ClCompile Include="OpenCV2.cpp">
       <Filter>源文件\DC</Filter>
     </ClCompile>
+    <ClCompile Include="erode_count.cpp">
+      <Filter>源文件\DR</Filter>
+    </ClCompile>
+    <ClCompile Include="erode_count2.cpp">
+      <Filter>源文件\DR</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

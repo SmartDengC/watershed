@@ -1,1 +1,24 @@
-﻿  watershed.vcxproj -> E:\Data_Code\CC++\OpenCV4.x\x64\Debug\watershed.exe
+﻿  erode_count.cpp
+f:\watershed\watershed\erode_count.cpp(82): warning C4244: “参数”: 从“double”转换到“const unsigned __int64”，可能丢失数据
+f:\watershed\watershed\erode_count.cpp(113): warning C4244: “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+  erode_count2.cpp
+f:\watershed\watershed\erode_count2.cpp(74): warning C4244: “参数”: 从“double”转换到“const unsigned __int64”，可能丢失数据
+f:\watershed\watershed\erode_count2.cpp(94): warning C4244: “参数”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+  正在生成代码...
+  watershed.vcxproj -> F:\watershed\x64\Debug\watershed.exe

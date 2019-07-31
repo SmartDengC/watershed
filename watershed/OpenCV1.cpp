@@ -11,7 +11,7 @@ using namespace std;
 * @param arg2: 分水岭处理后的Mat对象
 * @return：计数后的Mat对象
 */
-Mat CountSeed(vector<vector<Point>> contours, Mat dst);
+//Mat CountSeed(vector<vector<Point>> contours, Mat dst);
 
 /**
 * @brief：主函数，用于分水岭前面的图像处理
@@ -19,9 +19,9 @@ Mat CountSeed(vector<vector<Point>> contours, Mat dst);
 * @param arg2:none
 * @return none
 */
-int main(int argc, char** argv) {
-	//Mat src = imread("F:\\watershed\\photo\\originPic\\IMG_1304.JPG");
-	Mat src = imread("E:\\Data_Media\\Data_Picture\\seedPictures\\IMG_1345.JPG");
+int Qemain(int argc, char** argv) {
+	Mat src = imread("F:\\watershed\\photo\\originPic\\IMG_1304.JPG");
+	//Mat src = imread("E:\\Data_Media\\Data_Picture\\seedPictures\\IMG_1345.JPG");
 	if (src.empty()) {
 		printf("could not load image...\n");
 		char c = getchar();
@@ -43,6 +43,7 @@ int main(int argc, char** argv) {
 	Mat dist;
 	distanceTransform(binary, dist, DistanceTypes::DIST_L2, 3, CV_32F);  // L2 是两点之间的距离
 	normalize(dist, dist, 0, 1, NORM_MINMAX); // 变换之后值比较小  
+	imshow("dist", dist);
 
 	// (4): binary
 	threshold(dist, dist, 0.4, 1, THRESH_BINARY);
@@ -50,6 +51,8 @@ int main(int argc, char** argv) {
 	// (5): markers
 	Mat dist_m;
 	dist.convertTo(dist_m, CV_8U); // 变成8通道的
+
+	imshow("dist_m", dist_m);
 	vector<vector<Point>> contours(11111);
 	// 查找二值图像的边缘轮廓, 相当与找连通图
 	findContours(dist_m, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
@@ -97,7 +100,7 @@ int main(int argc, char** argv) {
 			}
 		}
 	}
-	dst = CountSeed(contours, dst);
+//	dst = CountSeed(contours, dst);
 	imshow("final Result", dst);
 	printf("number of objects :%zd", contours.size());
 
@@ -105,7 +108,7 @@ int main(int argc, char** argv) {
 	return 0;
 }
 
-Mat CountSeed(vector<vector<Point>> contours, Mat dst) {
+/*Mat CountSeed(vector<vector<Point>> contours, Mat dst) {
 	// (11): 查找连通图，然后进行数字填写
 	//计算轮廓矩 	
 	vector<Moments> mu(contours.size());
@@ -127,3 +130,4 @@ Mat CountSeed(vector<vector<Point>> contours, Mat dst) {
 	}
 	return dst;
 }
+*/
