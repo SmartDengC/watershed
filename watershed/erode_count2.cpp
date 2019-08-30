@@ -10,7 +10,7 @@
 using namespace cv;
 using namespace std;
 
-int  main(int argc, char** argv)
+int  mdain(int argc, char** argv)
 {
 	for (int i = 303; i <= 484; i++)
 	{
@@ -43,7 +43,7 @@ int  main(int argc, char** argv)
 		erode(dist_m, morhImg, structure_element);
 		//(10):  Find connectivity diagram(²éÕÒÁ¬Í¨Í¼)
 		vector<vector<Point>> contours;
-		findContours(morhImg, contours, CV_RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+		findContours(morhImg, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
 
 		// (11): create markers
 		Mat markers = Mat::zeros(src.size(), CV_32SC1);

@@ -19,19 +19,27 @@
     <Filter Include="源文件\DR">
       <UniqueIdentifier>{df25aeaa-c62e-4bc3-9109-390b3b030ce3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Main">
+      <UniqueIdentifier>{1d001220-42db-4b1b-9063-702e8bcc4850}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OpenCV1.cpp">
-      <Filter>源文件\DC</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenCV2.cpp">
-      <Filter>源文件\DC</Filter>
-    </ClCompile>
     <ClCompile Include="erode_count.cpp">
       <Filter>源文件\DR</Filter>
     </ClCompile>
     <ClCompile Include="erode_count2.cpp">
       <Filter>源文件\DR</Filter>
     </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>源文件\Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenCV1.h">
+      <Filter>源文件\DC</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenCV2.h">
+      <Filter>源文件\DC</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

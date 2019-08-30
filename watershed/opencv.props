@@ -3,12 +3,12 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>F:\OpenCV\opencv\build\include;F:\OpenCV\opencv\build\include\opencv2;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\OpenCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Ins_Develop\opencv4.x\opencv\build\include;D:\Ins_Develop\opencv4.x\opencv\build\include\opencv2;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Ins_Develop\opencv4.x\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalDependencies>opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world410d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

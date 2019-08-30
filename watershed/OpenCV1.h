@@ -11,7 +11,7 @@ using namespace std;
 * @param arg2: 分水岭处理后的Mat对象
 * @return：计数后的Mat对象
 */
-//Mat CountSeed(vector<vector<Point>> contours, Mat dst);
+Mat CountSeeds(vector<vector<Point>> contours, Mat dst);
 
 /**
 * @brief：主函数，用于分水岭前面的图像处理
@@ -19,15 +19,16 @@ using namespace std;
 * @param arg2:none
 * @return none
 */
-int Qemain(int argc, char** argv) {
-	Mat src = imread("F:\\watershed\\photo\\originPic\\IMG_1304.JPG");
-	//Mat src = imread("E:\\Data_Media\\Data_Picture\\seedPictures\\IMG_1345.JPG");
+int opencv_to_one(String filePath) {
+	// Mat src = imread("F:\\watershed\\photo\\originPic\\IMG_1304.JPG");
+	Mat src = imread(filePath);
 	if (src.empty()) {
 		printf("could not load image...\n");
 		char c = getchar();
 		return -1;
 	}
-	namedWindow("input image", WINDOW_AUTOSIZE);
+	// namedWindow("input image", WINDOW_AUTOSIZE);
+	namedWindow("input image", NORMAL_CLONE);
 	imshow("input image", src);
 
 	// (1): gray 背景纯色化
@@ -43,7 +44,7 @@ int Qemain(int argc, char** argv) {
 	Mat dist;
 	distanceTransform(binary, dist, DistanceTypes::DIST_L2, 3, CV_32F);  // L2 是两点之间的距离
 	normalize(dist, dist, 0, 1, NORM_MINMAX); // 变换之后值比较小  
-	imshow("dist", dist);
+	// imshow("dist", dist);
 
 	// (4): binary
 	threshold(dist, dist, 0.4, 1, THRESH_BINARY);
@@ -52,7 +53,6 @@ int Qemain(int argc, char** argv) {
 	Mat dist_m;
 	dist.convertTo(dist_m, CV_8U); // 变成8通道的
 
-	imshow("dist_m", dist_m);
 	vector<vector<Point>> contours(11111);
 	// 查找二值图像的边缘轮廓, 相当与找连通图
 	findContours(dist_m, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
@@ -100,27 +100,29 @@ int Qemain(int argc, char** argv) {
 			}
 		}
 	}
-//	dst = CountSeed(contours, dst);
+	dst = CountSeeds(contours, dst);
 	imshow("final Result", dst);
 	printf("number of objects :%zd", contours.size());
 
 	waitKey(0);
 	return 0;
 }
-
-/*Mat CountSeed(vector<vector<Point>> contours, Mat dst) {
+/*
+	实现在种子图像上面添加数字
+*/
+Mat CountSeeds(vector<vector<Point>> contours, Mat dst) {
 	// (11): 查找连通图，然后进行数字填写
-	//计算轮廓矩 	
+	//计算轮廓矩
 	vector<Moments> mu(contours.size());
 	for (int i = 0; i < contours.size(); i++) {
 		mu[i] = moments(contours[i], false);
 	}
-	//计算轮廓的质心 	
+	//计算轮廓的质心
 	vector<Point2f> mc(contours.size());
 	for (int i = 0; i < contours.size(); i++) {
 		mc[i] = Point2d(mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00);
 	}
-	//画轮廓及其质心并显示 	
+	//画轮廓及其质心并显示
 	vector<Vec4i> hierarchy;
 	for (int i = 0; i < contours.size(); i++) {
 		// Scalar color = Scalar(255, 0, 0);
@@ -130,4 +132,4 @@ int Qemain(int argc, char** argv) {
 	}
 	return dst;
 }
-*/
+

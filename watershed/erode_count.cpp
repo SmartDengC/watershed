@@ -51,7 +51,7 @@ int  maidn(int argc, char** argv){
 	erode(dist_m, morhImg, structure_element);
 	//(10):  Find connectivity diagram(≤È’“¡¨Õ®Õº)
 	vector<vector<Point>> contours;
-	findContours(morhImg, contours, CV_RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+	findContours(morhImg, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
 
 	// (11): create markers
 	Mat markers = Mat::zeros(src.size(), CV_32SC1);

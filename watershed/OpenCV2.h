@@ -1,3 +1,4 @@
+#pragma once
 # include <opencv2/opencv.hpp>
 # include <iostream>
 # include "stdio.h"
@@ -7,7 +8,7 @@ using namespace cv;
 using namespace std;
 
 // 因为是一个项目，不能有两个main，所以重命名madin即可使用说
-int madin(int argc, char** argv) {
+int opencv_to_all() {
 	/**
 		输入图像----灰度----二值----距离变换----寻找种子
 			   ----生成marker-----分水岭变换----输出图像---end
