@@ -1,0 +1,9 @@
+﻿  uic qt_1.ui
+  rcc qt_1.qrc
+  moc qt_1.h
+   RCC: Warning: No resources in 'E:\Data_Code\qt\qt_opencv\src\qt_1\qt_1\qt_1.qrc'.
+  main.cpp
+  qt_1.cpp
+  qrc_qt_1.cpp
+  moc_qt_1.cpp
+  qt_1.vcxproj -> E:\Data_Code\qt\qt_opencv\src\qt_1\x64\Debug\qt_1.exe
